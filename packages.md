@@ -71,3 +71,56 @@ Handle missing data using imputation
 set.seed(number)
 imputed = complete(mice(simple-data-frame))
 ```
+
+rpart
+=====
+
+Create a regressin tree
+
+``` R
+rpart(dependent ~ independent, data = fram, method="class", minbucket=25)
+```
+
+rpart.plot
+==========
+
+plot the rpart regression tree
+
+``` R
+prp(rpart-tree)
+```
+
+randomforest
+============
+
+Create a random forest tree
+
+``` R
+randomForest(independent ~ depenedent, data = Train, ntree=200, nodesize=25 )
+```
+
+caret
+======
+
+Create number of folds for the train function
+
+``` R
+numFolds = trainControl( method = "cv", number = 10 )
+```
+
+Create a data frame from all combinations of the supplied vectors or factors
+
+``` R
+cpGrid = expand.grid( .cp = seq(0.01,0.5,0.01))
+```
+
+Calculate the optimal cp for regression tree
+
+``` R
+train(independent ~ dependent, data = Train, method = "rpart", trControl = numFolds, tuneGrid = cpGrid )
+```
+
+e1071
+======
+
+Misc statistics functions

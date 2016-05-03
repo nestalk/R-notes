@@ -6,3 +6,4 @@ Notes on using R for statistics
 - [Packages](packages.md): usefull packages and how to use them
 - [Linear Regression](linear-regression.md): How to do a linear regression
 - [Logistic Regression](logistic-regression.md): How to do logistic regression
+- [Regression Trees](regression-trees.md): how to do a regression tree
