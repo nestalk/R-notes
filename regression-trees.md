@@ -107,3 +107,26 @@ sum(errors)/number-of-observations
 # Add penalty function to tree
 rpart(bucket2009 ~ ., data=ClaimsTrain, method="class", cp=0.00005, parms=list(loss=PenaltyMatrix))
 ```
+
+Produce a chart that for each variable measures
+the number of times that variable was selected for splitting
+(the value on the x-axis).
+
+```R
+vu = varUsed(MODEL, count=TRUE)
+
+vusorted = sort(vu, decreasing = FALSE, index.return = TRUE)
+
+dotchart(vusorted$x, names(MODEL$forest$xlevels[vusorted$ix]))
+```
+
+Produce a chart on the impurity, how homogenous each leaf of the tree is.
+In each tree in the forest, whenever we select a variable and perform
+a split, the impurity is decreased. Therefore, one way to measure the
+importance of a variable is to average the reduction in impurity, taken
+over all the times that variable is selected for splitting in all of the
+trees in the forest
+
+```R
+varImpPlot(MODEL)
+```
