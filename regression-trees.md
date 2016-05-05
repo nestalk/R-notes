@@ -62,7 +62,15 @@ predict(forest, newdata = Test)
 K-fold cross validation. Split the training set into k number of folds, build models on each k-1
 folds. Compare the accuracy of the models and take the average.
 
-Complexity Parameter (cp) - like R<sup>2</sup>, smaller cp makes a bigger tree
+Complexity Parameter (cp) - like R<sup>2</sup>, smaller cp makes a bigger tree. Too many splits cause
+model to overfit training data.
+
+**RSS** Residual sum of squares - the sum of the square differences.
+
+Goal with splits is to minimise sum-of(RSS-at-each-leaf)+lambda*splits. Lambda is the penalty,
+between 0 and 1, the higher it is the less splits you will make.
+
+cp = lambda/RSS-with-no-splits
 
 Perform cross validation
 
@@ -80,3 +88,22 @@ rpart(independent ~ dependent, data = Train, method="class", cp = 0.18)
 
 Use a penalty matrix to define asymmetric penalties for errors. An error in on direction is worse than
 if it was in the opposite direction.
+
+``` R
+# example penalty matrix
+matrix(c(0,1,2,3,4,2,0,1,2,3,4,2,0,1,2,6,4,2,0,1,8,6,4,2,0), byrow=TRUE, nrow=5)
+
+     [,1] [,2] [,3] [,4] [,5]
+[1,]    0    1    2    3    4
+[2,]    2    0    1    2    3
+[3,]    4    2    0    1    2
+[4,]    6    4    2    0    1
+[5,]    8    6    4    2    0
+
+# Calculate error
+errors <- as.matrix(table(actuals, predictions))*PenaltyMatrix
+sum(errors)/number-of-observations
+
+# Add penalty function to tree
+rpart(bucket2009 ~ ., data=ClaimsTrain, method="class", cp=0.00005, parms=list(loss=PenaltyMatrix))
+```

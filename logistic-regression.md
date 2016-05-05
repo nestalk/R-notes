@@ -24,6 +24,7 @@ Creating logistic model
 ``` R
 glm(predict-variable ~ variable1 + variable2, data = frame, family=binomal)
 glm(predict-variable ~ ., data=frame, family=binomal)
+# you can do combinations using variable1:variable2
 ```
 
 View the model details, similar to linear model. Coefficients > 0 contribute to P(y=1). AIC is

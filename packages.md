@@ -117,7 +117,10 @@ cpGrid = expand.grid( .cp = seq(0.01,0.5,0.01))
 Calculate the optimal cp for regression tree
 
 ``` R
-train(independent ~ dependent, data = Train, method = "rpart", trControl = numFolds, tuneGrid = cpGrid )
+tr <- train(independent ~ dependent, data = Train, method = "rpart", trControl = numFolds, tuneGrid = cpGrid )
+
+#Get best tree
+tr$finalModel
 ```
 
 e1071
