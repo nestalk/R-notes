@@ -146,7 +146,7 @@ tm_map(corpus, PlainTextDocument)
 tm_map(corpus, removePunctuation)
 # remove words
 tm_map(corpus, removeWords, c("other-word", stopwords("english")))
-# stem document
+# stem document, will use `SnowballC`
 tm_map(corpus, stemDocument)
 ```
 
@@ -182,3 +182,5 @@ colnames(dataframe) = make.names(colnames(dataframe))
 
 SnowballC
 ==========
+
+Porter stemmer, load along with `tm` library.
