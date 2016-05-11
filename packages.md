@@ -127,3 +127,58 @@ e1071
 ======
 
 Misc statistics functions
+
+tm
+===
+
+Create text documents.
+
+``` R
+Corpus(VectorSource(text-vector))
+```
+
+``` R
+# Convert all text to lowercase
+tm_map(corpus, tolower)
+# convert back to plain text document
+tm_map(corpus, PlainTextDocument)
+# remove punctuation
+tm_map(corpus, removePunctuation)
+# remove words
+tm_map(corpus, removeWords, c("other-word", stopwords("english")))
+# stem document
+tm_map(corpus, stemDocument)
+```
+
+``` R
+# Get single document
+corpus[[1]]
+# Get single document as text
+as.character(corpus[[1]])
+corpus[[1]]$content
+```
+
+``` R
+# Create sparse matrix of words in the corpus
+DocumentTermMatrix(corpus)
+# inspect matrix
+inspect(frequencies[1000:1005,505:515])
+# convert to data frame
+as.data.frame(as.matrix(sparse))
+```
+
+``` R
+# find most popular words
+findFreqTerms(frequencies, lowfreq=times-it-appears)
+# remove low used words, words used in less than 1-theshold of documents
+# for words that are in 0.3% or more documents: threshold = 1-0.003 = 0.997
+removeSparseTerms(frequencies, threshold)
+```
+
+``` R
+# make sure all variable names are R friendly
+colnames(dataframe) = make.names(colnames(dataframe))
+```
+
+SnowballC
+==========

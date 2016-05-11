@@ -7,3 +7,4 @@ Notes on using R for statistics
 - [Linear Regression](linear-regression.md): How to do a linear regression
 - [Logistic Regression](logistic-regression.md): How to do logistic regression
 - [Regression Trees](regression-trees.md): how to do a regression tree
+- [Natural Language Processing](language-processing.md): analysing text
