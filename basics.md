@@ -170,3 +170,8 @@ Remove vectors from a data frame
 ``` R
 frame[,names(frame) %in% vector-of-names-to-remove)
 ```
+
+``` R
+# Fix column names
+colnames(data_frame_name) <- make.names(colnames(data_frame_name))
+```

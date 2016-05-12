@@ -142,6 +142,8 @@ Corpus(VectorSource(text-vector))
 tm_map(corpus, tolower)
 # convert back to plain text document
 tm_map(corpus, PlainTextDocument)
+# convert to lowercase without having to convert back to plain text
+tm_map(corpus, content_transformer(tolower))
 # remove punctuation
 tm_map(corpus, removePunctuation)
 # remove words
