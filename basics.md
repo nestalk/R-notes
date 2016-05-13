@@ -175,3 +175,13 @@ frame[,names(frame) %in% vector-of-names-to-remove)
 # Fix column names
 colnames(data_frame_name) <- make.names(colnames(data_frame_name))
 ```
+
+Show help
+
+``` R
+# For command
+?command
+# for package
+help.start()
+help(package="package-name")
+```
