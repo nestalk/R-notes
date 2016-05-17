@@ -123,6 +123,16 @@ tr <- train(independent ~ dependent, data = Train, method = "rpart", trControl =
 tr$finalModel
 ```
 
+Normalize data, all data is set with mean of 0 and a standard deviatian of 1
+
+``` R
+# preprocess 
+preproc = preProcess(airlines)
+# normalize
+airlinesNorm = predict(preproc, airlines)
+```
+
+
 e1071
 ======
 
@@ -186,3 +196,15 @@ SnowballC
 ==========
 
 Porter stemmer, load along with `tm` library.
+
+flexclust
+=========
+
+Apply clusters from one to new data
+
+``` R
+# use existing kmeans and original data
+KMC.kcca = as.kcca(KMC, healthyVector)
+# apply to new data
+tumorClusters = predict(KMC.kcca, newdata = tumorVector)
+```

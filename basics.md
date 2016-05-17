@@ -19,6 +19,8 @@ Read CSV file into a variable
 
 ``` R
 Variable <- read.csv("filename")
+# read in file with other type of seperator
+read.table("filename", header=FALSE, sep="|",quote="\"")
 ```
 
 Display stucture of data frame
@@ -169,6 +171,7 @@ Remove vectors from a data frame
 
 ``` R
 frame[,names(frame) %in% vector-of-names-to-remove)
+frame$vector <- NULL
 ```
 
 ``` R
@@ -184,4 +187,9 @@ Show help
 # for package
 help.start()
 help(package="package-name")
+```
+
+``` R
+# dimensions of a vector
+dim(flowerClusters) = c(50,50)
 ```
