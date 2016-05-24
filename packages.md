@@ -208,3 +208,31 @@ KMC.kcca = as.kcca(KMC, healthyVector)
 # apply to new data
 tumorClusters = predict(KMC.kcca, newdata = tumorVector)
 ```
+
+ggplot2
+======
+
+Graphing library. Uses the grammer of graphics.
+Data, Aesthetic (data mapped to atttibutes), Geometric (how it is rendered)
+
+``` R
+scatterplot = ggplot(WHO, aes(x = GNI, y = FertilityRate))
+scatterplot + geom_point()
+# Make a line graph instead:
+scatterplot + geom_line()
+```
+
+maps
+=====
+
+
+ggmap
+======
+
+``` R
+# Load a map of Chicago into R:
+chicago = get_map(location = "chicago", zoom = 11)
+
+# Look at the map
+ggmap(chicago)
+```
